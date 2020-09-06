@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const episodeSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  number: Number,
-  season: mongoose.Schema.ObjectId,
-  src: String
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  number: { type: Number, required: true },
+  season: { type: mongoose.Schema.ObjectId, required: true },
+  src: { type: String, required: true },
 });
 
-const model = new mongoose.model('Episodes', episodeSchema)
+const model = new mongoose.model('Episodes', episodeSchema);
 
-module.exports = model
+module.exports = model;

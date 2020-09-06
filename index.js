@@ -14,12 +14,8 @@ app.use(errorHandler)
 //parsers
 app.use(express.json())
 
-//Test
-app.get('/', (req, res, next) => {
-    res.send({
-        message: '😀😁😀😀😁😁'
-    })
-})
+//Videos
+app.use('/mediaSrc', express.static(process.env.MEDIAFILES))
 
 routes(app)
 
