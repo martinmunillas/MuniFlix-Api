@@ -30,7 +30,9 @@ const updateSeries = async (id, series) => {
 };
 
 const deleteSeries = async (id) => {
-  return await seriesModel.deleteOne({ _id: id });
+  const deletedSeries = await seriesModel.deleteOne({ _id: id });
+  await deleteSeasonsBySeries(id);
+  return deletedSeries;
 };
 
 // SEASONS
@@ -43,7 +45,15 @@ const updateSeason = async (id, season) => {
 };
 
 const deleteSeason = async (id) => {
-  return await seasonModel.deleteOne({ _id: id });
+  const deletedSeason = await seasonModel.deleteOne({ _id: id });
+  deleteEpisodesBySeason(id);
+  return deletedSeason;
+};
+
+const deleteSeasonsBySeries = async (serieId) => {
+  const seasons = await seasonModel.find({ serie: serieId });
+  seasons.forEach((season) => deleteEpisodesBySeason(season._id));
+  await seasonModel.deleteMany({ serie: serieId });
 };
 
 // EPISODES
@@ -57,6 +67,10 @@ const updateEpisode = async (id, episode) => {
 
 const deleteEpisode = async (id) => {
   return await episodeModel.deleteOne({ _id: id });
+};
+
+const deleteEpisodesBySeason = async (seasonId) => {
+  return await episodeModel.deleteMany({ season: seasonId });
 };
 
 module.exports = {

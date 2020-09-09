@@ -6,7 +6,7 @@ const seriesSchema = new mongoose.Schema({
   cast: { type: [String], required: true },
   startYear: { type: Number, required: true },
   finalYear: { type: Number, required: true },
-  clasification: { type: String, required: true },
+  clasification: { type: Number, required: true },
   cover: { type: String, required: true },
 });
 
