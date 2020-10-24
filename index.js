@@ -15,7 +15,7 @@ app.use(errorHandler)
 app.use(express.json())
 
 //Videos
-app.use('/mediaSrc', express.static(process.env.MEDIAFILES))
+app.use('/mediaSrc', express.static(__dirname + process.env.MEDIAFILES))
 
 routes(app)
 
