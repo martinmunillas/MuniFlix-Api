@@ -20,5 +20,5 @@ app.use('/mediaSrc', express.static(__dirname + process.env.MEDIAFILES))
 routes(app)
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server listening in ${process.env.URL}${process.env.PORT}`)
+    console.log(`Server listening in ${process.env.PORT}`)
 })
