@@ -6,8 +6,8 @@ const series = require('../components/series/network');
 const { APP_PATH } = process.env
 
 const routes = (app) => {
-  app.use(APP_PATH + '/movies', movies);
-  app.use(APP_PATH + '/series', series);
+  app.use('/movies', movies);
+  app.use('/series', series);
 };
 
 module.exports = routes;
