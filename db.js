@@ -1,18 +1,15 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-require('dotenv').config
+require('dotenv').config;
 
-mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise;
 
 const connect = async () => {
-    await mongoose.connect(
-        `mongodb://${process.env.DB_HOST_IP}/${process.env.DB_NAME}`,
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        }
-    )
-    console.log('DataBase connected succesfully')
-}
+  await mongoose.connect(process.env.DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  console.log('DataBase connected succesfully');
+};
 
-module.exports = connect    
+module.exports = connect;
